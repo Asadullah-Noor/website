@@ -63,7 +63,6 @@ const FEATURED = {
 
 const PROJECTS = [
   { title: "Ramy Pet Hospital", subtitle: "Veterinary Practice System", desc: "Full-stack practice management system for a veterinary client: client and pet records, appointments, lab reports (CBC, LFT, RFT, Parasites) and printable documents.", tech: ["React", "Node.js", "Express", "MongoDB Atlas"], live: null, github: null },
-  { title: "Ramy Pet Store", subtitle: "Pet Store", desc: "Online store for Ramy Pet's products.", tech: ["React", "Node.js", "MongoDB"], live: null, github: null },
   { title: "Yardzai", subtitle: "Yard Sale Marketplace", desc: "A MERN-based platform to buy and sell pre-owned items locally, with a GraphQL API and smooth location-based experience.", tech: ["MongoDB", "Express", "Node.js", "GraphQL"], live: "https://yardze-web-production.up.railway.app/", github: null },
   { title: "Servacy", subtitle: "Home Services App", desc: "A MERN and GraphQL application for booking home services with a clean UI and seamless booking flow.", tech: ["React", "Node.js", "MongoDB", "GraphQL"], live: "https://tap-to-door.vercel.app/", github: null },
   { title: "JHS", subtitle: "School Management System", desc: "Built from requirement gathering to full implementation, modernizing a school that ran on paperwork for 4–5 decades.", tech: ["React", "Tailwind CSS", "Redux", "Node.js", "MongoDB"], live: "https://jhs-git-main-asadullah-noors-projects.vercel.app/login", github: null },
