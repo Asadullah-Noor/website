@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import asadullah from "./assets/asadullah.pdf";
+import asadullah from "./assets/Asadullah_Noor_Resume.pdf";
 
 // ─── BREAKPOINT HOOK ──────────────────────────────────────────────────────────
 function useBreakpoint() {
@@ -20,6 +20,7 @@ const SKILLS = {
   Programming: ["C++", "JavaScript", "Python"],
   Frontend: ["HTML", "CSS", "React", "Tailwind CSS", "Bootstrap"],
   Backend: ["Node.js", "Express.js", "MongoDB", "GraphQL"],
+  "Agentic AI": ["LangChain", "LangGraph"],
   Tools: ["Git", "Postman", "Swagger", "Figma", "Shadcn UI", "Material UI", "Cursor AI"],
 };
 
@@ -27,6 +28,7 @@ const LEVELS = {
   "C++": 90, JavaScript: 85, Python: 80,
   HTML: 95, CSS: 90, React: 82, "Tailwind CSS": 88, Bootstrap: 80,
   "Node.js": 80, "Express.js": 78, MongoDB: 75, GraphQL: 65,
+  LangChain: 65, LangGraph: 60,
   Git: 85, Postman: 80, Swagger: 72, Figma: 75,
   "Shadcn UI": 70, "Material UI": 72, "Cursor AI": 78,
 };
@@ -35,18 +37,22 @@ const SCOLORS = {
   Programming: "#d5fa02",
   Frontend: "#00f5d4",
   Backend: "#ff6b6b",
+  "Agentic AI": "#c77dff",
   Tools: "#ffd93d",
 };
 
 const PROJECTS = [
-  { title: "TickFlow", subtitle: "Multi-tenant Ticket Management", desc: "A scalable issue tracking system for businesses to manage internal workflows efficiently. Built with real-world backend architecture at CYRANIX LLC.", tech: ["Node.js", "Express", "MongoDB", "Swagger", "Postman"], live: "https://tickflo-fe-production.up.railway.app/auth/login", github: null, color: "#00f5d4" },
-  { title: "Yardzai", subtitle: "Garage Selling — Yard Sale App", desc: "A MERN-based platform allowing users to buy and sell pre-owned items locally with GraphQL API and smooth location-based UX.", tech: ["MongoDB", "Express", "Node.js", "GraphQL"], live: null, github: null, color: "#ff6b6b" },
-  { title: "Servacy", subtitle: "Home Service Provider App", desc: "A MERN stack and GraphQL application providing a platform for users to book home services with a clean UI and seamless booking flow.", tech: ["MongoDB", "Express", "Node.js", "React", "GraphQL"], live: "https://tap-to-door.vercel.app/", github: null, color: "#e879f9" },
-  { title: "InvoZone", subtitle: "Corporate Landing Page", desc: "A responsive and visually engaging corporate landing page built with modern UI principles and pixel-perfect design implementation.", tech: ["React", "Tailwind CSS", "JavaScript"], live: null, github: "https://github.com/Asadullah-Noor/InvoZone", color: "#ffd93d" },
-  { title: "XhaffiXhop", subtitle: "E-commerce Store", desc: "A modern e-commerce prototype with clean UI, smooth product browsing experience, and full cart functionality.", tech: ["React", "Tailwind CSS"], live: "https://xhafeexhop.vercel.app/", github: null, color: "#6bcb77" },
-  { title: "Awfera LLM Platform", subtitle: "AI Learning Platform Clone", desc: "An educational platform focused on Large Language Models with rich course content, user dashboards, and modern UX.", tech: ["React", "Node.js", "Express", "MongoDB"], live: null, github: null, color: "#c77dff" },
-  { title: "My Portfolio", subtitle: "Personal Animated Portfolio", desc: "Personal animated portfolio showcasing projects, skills, and developer experience with Framer Motion animations.", tech: ["React", "Tailwind CSS", "Framer Motion"], live: "https://asadullah-wheat.vercel.app/", github: null, color: "#00b4d8" },
+  { title: "Zelvarq", subtitle: "Veterinary Clinic Management SaaS", desc: "A multi-tenant SaaS for veterinary clinics with Google sign-in, per-clinic branding, onboarding wizard, subscription billing and a superadmin panel. Covers patients & pets, appointments, consultations and expenses.", tech: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Cloudinary"], live: null, github: null, color: "#00f5d4" },
+  { title: "Ramy Pet Hospital", subtitle: "Veterinary Practice System — Client Project", desc: "A full-stack MERN practice management system built for a client. Handles client and pet records, appointments, lab reports (CBC, LFT, RFT, Parasites) and printable documents.", tech: ["React", "Node.js", "Express", "MongoDB Atlas"], live: null, github: null, color: "#6bcb77" },
+  { title: "Smart Micro-CRM", subtitle: "Mobile CRM for Small Organizations", desc: "A mobile CRM for schools, gyms and barber shops covering member management, scheduling, fee tracking, staff, attendance and reports, with WhatsApp notifications. Built as a BSSE final year project at UCP.", tech: ["React Native", "Node.js", "MongoDB Atlas", "WhatsApp API"], live: null, github: null, color: "#ffd93d" },
   { title: "JHS", subtitle: "School Management System", desc: "A comprehensive School Management System built from scratch — from requirement gathering to full implementation. Modernized a school that ran on paperwork for 4–5 decades using the MERN stack with modern UI components.", tech: ["React", "Tailwind CSS", "Redux", "ReChart", "Node.js", "Express", "MongoDB"], live: "https://jhs-git-main-asadullah-noors-projects.vercel.app/login", github: null, color: "#5e5ede" },
+  { title: "iAsync Lead CRM", subtitle: "Internal Outreach Toolkit", desc: "A multi-tab React CRM we use to manage cold-outreach leads across industries and countries, paired with a Python lead-finder that combines Google Places data with website scraping.", tech: ["React", "Python", "Google Places API"], live: null, github: null, color: "#ff6b6b" },
+  { title: "TickFlow", subtitle: "Multi-tenant Ticket Management", desc: "A scalable issue tracking system for businesses to manage internal workflows efficiently. Built with real-world backend architecture at CYRANIX LLC.", tech: ["Node.js", "Express", "MongoDB", "Swagger", "Postman"], live: "https://tickflo-fe-production.up.railway.app/auth/login", github: null, color: "#00b4d8" },
+  { title: "Yardzai", subtitle: "Garage Selling — Yard Sale App", desc: "A MERN-based platform allowing users to buy and sell pre-owned items locally with GraphQL API and smooth location-based UX.", tech: ["MongoDB", "Express", "Node.js", "GraphQL"], live: null, github: null, color: "#f97316" },
+  { title: "Servacy", subtitle: "Home Service Provider App", desc: "A MERN stack and GraphQL application providing a platform for users to book home services with a clean UI and seamless booking flow.", tech: ["MongoDB", "Express", "Node.js", "React", "GraphQL"], live: "https://tap-to-door.vercel.app/", github: null, color: "#e879f9" },
+  { title: "XhaffiXhop", subtitle: "E-commerce Store", desc: "A modern e-commerce prototype with clean UI, smooth product browsing experience, and full cart functionality.", tech: ["React", "Tailwind CSS"], live: "https://xhafeexhop.vercel.app/", github: null, color: "#84cc16" },
+  { title: "InvoZone", subtitle: "Corporate Landing Page", desc: "A responsive and visually engaging corporate landing page built with modern UI principles and pixel-perfect design implementation.", tech: ["React", "Tailwind CSS", "JavaScript"], live: null, github: "https://github.com/Asadullah-Noor/InvoZone", color: "#facc15" },
+  { title: "Awfera LLM Platform", subtitle: "AI Learning Platform Clone", desc: "An educational platform focused on Large Language Models with rich course content, user dashboards, and modern UX.", tech: ["React", "Node.js", "Express", "MongoDB"], live: null, github: null, color: "#c77dff" },
 ];
 
 // ─── NEURAL NETWORK BACKGROUND ────────────────────────────────────────────────
@@ -205,7 +211,7 @@ function Nav({ active, setActive }) {
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.05 }} onClick={() => go("Home")}
           style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? 15 : 20, fontWeight:900, color:"#00f5d4", cursor: isMobile ? "auto" : "none", letterSpacing:1, userSelect:"none", zIndex:201 }}>
-          ⟨ XhaffiXcript/⟩
+          ⟨ iAsync/⟩
         </motion.div>
 
         {/* Desktop links */}
@@ -247,10 +253,10 @@ function Nav({ active, setActive }) {
 }
 
 function HomePage({ setActive }) {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
   const words = [
-    { text:"MERN Stack", dir:"left" }, { text:"AI Learner", dir:"right" },
-    { text:"Problem Solver", dir:"top" }, { text:"Creative Thinker", dir:"bottom" },
+    { text:"Web Development", dir:"left" }, { text:"MERN Stack", dir:"right" },
+    { text:"Agentic AI", dir:"top" }, { text:"Digital Marketing", dir:"bottom" },
   ];
   return (
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center", padding: isMobile ? "90px 20px 60px" : "0 32px", position:"relative" }}>
@@ -269,22 +275,22 @@ function HomePage({ setActive }) {
         ))}
       </div>
 
-      {/* Name */}
+      {/* Brand name */}
       <motion.h1 initial={{ opacity:0, scale:0.86 }} animate={{ opacity:1, scale:1 }} transition={{ delay:0.72, duration:1, ease:"easeOut" }}
-        style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? "clamp(30px,10vw,52px)" : "clamp(38px,7vw,88px)", fontWeight:900, lineHeight:1.08, margin:"0 0 16px", background:"linear-gradient(135deg,#ffffff 22%,#00f5d4 62%,#00b4d8 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", letterSpacing:-1 }}>
-        Asadullah Noor
+        style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? "clamp(40px,14vw,64px)" : "clamp(48px,9vw,110px)", fontWeight:900, lineHeight:1.08, margin:"0 0 16px", background:"linear-gradient(135deg,#ffffff 22%,#00f5d4 62%,#00b4d8 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", letterSpacing:-1 }}>
+        iAsync
       </motion.h1>
 
       {/* Subtitle */}
       <motion.p initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} transition={{ delay:1.02, duration:0.8 }}
         style={{ fontFamily:"'Space Mono',monospace", fontSize: isMobile ? 11 : "clamp(12px,1.8vw,16px)", color:"rgba(255,255,255,0.5)", letterSpacing: isMobile ? 1 : 3, marginBottom:14, textTransform:"uppercase", lineHeight:1.8 }}>
-        Jr. Full Stack Engineer · MERN Stack Developer
+        Web Development & Digital Marketing · Lahore
       </motion.p>
 
-      {/* Quote */}
+      {/* Founder line */}
       <motion.p initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ delay:1.32, duration:1 }}
-        style={{ fontFamily:"'Crimson Pro',serif", fontSize: isMobile ? 16 : "clamp(17px,2.2vw,22px)", color:"rgba(255,255,255,0.35)", fontStyle:"italic", marginBottom: isMobile ? 28 : 38, maxWidth:520, lineHeight:1.65, padding: isMobile ? "0 4px" : 0 }}>
-        "Every great code begins with an even better story."
+        style={{ fontFamily:"'Crimson Pro',serif", fontSize: isMobile ? 16 : "clamp(17px,2.2vw,22px)", color:"rgba(255,255,255,0.45)", fontStyle:"italic", marginBottom: isMobile ? 28 : 38, maxWidth:560, lineHeight:1.65, padding: isMobile ? "0 4px" : 0 }}>
+        Founded by Asadullah Noor — MERN Stack Developer & Agentic AI Engineer
       </motion.p>
 
       {/* Tagline box */}
@@ -298,8 +304,8 @@ function HomePage({ setActive }) {
         style={{ display:"flex", gap: isMobile ? 10 : 16, flexWrap:"wrap", justifyContent:"center" }}>
         {[
           { label:"View Projects", action:() => setActive("Projects"), primary:true },
-          { label:"Contact Me",   action:() => setActive("Contact"),  primary:false },
-          { label:"Download Resume", action:() => window.open(asadullah,"_blank"), primary:false },
+          { label:"Contact Us",   action:() => setActive("Contact"),  primary:false },
+          { label:"Founder's Resume", action:() => window.open(asadullah,"_blank"), primary:false },
         ].map(({ label, action, primary }) => (
           <motion.button key={label} onClick={action}
             whileHover={{ scale:1.05, boxShadow:primary?"0 0 32px rgba(0,245,212,0.32)":"0 0 18px rgba(0,245,212,0.12)" }}
@@ -343,18 +349,18 @@ function SkillBar({ name, level, color, delay }) {
 function AboutPage() {
   const { isMobile, isTablet } = useBreakpoint();
   const bioLines = [
-    <span>I am <span style={{ color:"#00f5d4", fontWeight:700 }}>Asadullah Noor</span>, a passionate Jr. Full Stack Engineer specializing in the MERN stack. My journey began in 10th grade when I discovered the power of building ideas through code.</span>,
-    <span>After high school, I built my foundation through <span style={{ color:"#00b4d8" }}>FreeCodeCamp</span>, learning not just to write code, but to think like a developer.</span>,
-    <span>My professional experience began at <span style={{ color:"#ffd93d" }}>CYRANIX LLC</span>, working on TickFlow — a multi-tenant ticket management system — gaining real backend architecture expertise.</span>,
-    <span>YardZai Garage Selling website works with complex APIs built from scratch using Node.js. Servacy Home Service Provider App includes full CRUD APIs built with GraphQL.</span>,
-    <span>Currently building a MERN School Management System and focused on mastering <span style={{ color:"#c77dff" }}>Artificial Intelligence</span> for AI-powered applications.</span>,
+    <span><span style={{ color:"#00f5d4", fontWeight:700 }}>iAsync</span> is a web development and digital marketing business based in Lahore, founded by <span style={{ color:"#00f5d4", fontWeight:700 }}>Asadullah Noor</span> — a MERN stack developer and agentic AI engineer.</span>,
+    <span>The journey began in 10th grade, when I discovered the power of building ideas through code. After high school I built my foundation through <span style={{ color:"#00b4d8" }}>FreeCodeCamp</span>, learning not just to write code, but to think like a developer.</span>,
+    <span>My professional experience began at <span style={{ color:"#ffd93d" }}>CYRANIX LLC</span>, a US-based remote startup, where I worked on TickFlow (multi-tenant ticket management), Yardzai (a yard-sale marketplace) and Servacy (on-demand home services with GraphQL).</span>,
+    <span>With iAsync, I now build custom software for real businesses — from a school management system that replaced decades of paperwork, to veterinary clinic software and a mobile CRM for small organizations.</span>,
+    <span>I'm completing my BS in Software Engineering at the University of Central Punjab, and I'm focused on building <span style={{ color:"#c77dff" }}>AI-powered applications</span> with LangChain and LangGraph.</span>,
   ];
 
   return (
     <div style={{ maxWidth:1100, margin:"0 auto", padding: isMobile ? "96px 20px 60px" : isTablet ? "100px 32px 70px" : "120px 48px 80px" }}>
       <motion.div initial={{ opacity:0, y:26 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.8 }}>
         <h2 style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? "clamp(24px,7vw,40px)" : "clamp(28px,5vw,54px)", fontWeight:900, marginTop:12, marginBottom: isMobile ? 28 : 42, background:"linear-gradient(135deg,#fff,#00f5d4)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>
-          The Developer Behind the Code
+          The Team Behind the Code
         </h2>
       </motion.div>
 
@@ -371,7 +377,7 @@ function AboutPage() {
             ))}
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginTop:20 }}>
-            {[{ l:"Projects", v:"8+" }, { l:"Stack", v:"MERN" }, { l:"Level", v:"Jr." }, { l:"Goal", v:"AI/ML" }].map(({ l, v }) => (
+            {[{ l:"Projects", v:`${PROJECTS.length}+` }, { l:"Stack", v:"MERN" }, { l:"Base", v:"Lahore" }, { l:"Focus", v:"Web+AI" }].map(({ l, v }) => (
               <div key={l} style={{ background:"rgba(0,245,212,0.04)", border:"1px solid rgba(0,245,212,0.12)", borderRadius:12, padding: isMobile ? 16 : 20, textAlign:"center" }}>
                 <div style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? 20 : 24, fontWeight:900, color:"#75c9be" }}>{v}</div>
                 <div style={{ fontFamily:"'Space Mono',monospace", fontSize:13, color:"rgba(255,255,255,0.45)", marginTop:6, letterSpacing:2 }}>{l}</div>
@@ -408,7 +414,7 @@ function ProjectCard({ project, index }) {
   return (
     <motion.div ref={ref}
       initial={{ opacity:0, y:50 }} animate={inView?{ opacity:1, y:0 }:{}}
-      transition={{ delay:index*0.07, duration:0.62, ease:"easeOut" }}
+      transition={{ delay:(index%3)*0.07, duration:0.62, ease:"easeOut" }}
       onHoverStart={() => setHov(true)} onHoverEnd={() => setHov(false)} whileHover={{ y:-6 }}
       style={{ background:hov?"rgba(255,255,255,0.045)":"rgba(255,255,255,0.025)", borderRadius:16, padding: isMobile ? 22 : 32, border:`1px solid ${hov?project.color+"45":"rgba(255,255,255,0.07)"}`, boxShadow:hov?`0 20px 55px ${project.color}14,inset 0 1px 0 ${project.color}18`:"none", transition:"all 0.3s ease", position:"relative", overflow:"hidden" }}>
       <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${project.color},transparent)`, opacity:hov?1:0, transition:"opacity 0.3s" }} />
@@ -461,10 +467,10 @@ function ProjectsPage() {
     <div style={{ maxWidth:1100, margin:"0 auto", padding: isMobile ? "96px 20px 60px" : isTablet ? "100px 32px 70px" : "120px 48px 80px" }}>
       <motion.div initial={{ opacity:0, y:26 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.8 }}>
         <h2 style={{ fontFamily:"'Orbitron',monospace", fontSize: isMobile ? "clamp(24px,7vw,40px)" : "clamp(28px,5vw,54px)", fontWeight:900, marginTop:12, marginBottom:12, background:"linear-gradient(135deg,#fff,#00f5d4)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>
-          What I've Built
+          What We've Built
         </h2>
         <p style={{ fontFamily:"'Crimson Pro',serif", fontSize: isMobile ? 16 : 18, color:"rgba(255,255,255,0.42)", marginBottom: isMobile ? 32 : 52 }}>
-          Real-world projects across the full MERN stack
+          Real-world products and client work across the full MERN stack
         </p>
       </motion.div>
       <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill,minmax(320px,1fr))", gap: isMobile ? 16 : 24 }}>
@@ -553,7 +559,7 @@ function Memory() {
 }
 
 function Typing() {
-  const sentences = ["const dev = 'Asadullah Noor';","npm install talent ambition focus","git commit -m 'Building the future'","console.log('Hello World! 🚀');"];
+  const sentences = ["const studio = 'iAsync';","npm install talent ambition focus","git commit -m 'Building the future'","console.log('Hello World! 🚀');"];
   const [idx, setIdx]     = useState(0);
   const [typed, setTyped] = useState("");
   const [start, setStart] = useState(null);
@@ -644,7 +650,7 @@ function ContactPage() {
 
   const socials = [
     { label:"GitHub",   icon:"⌥",  href:"https://github.com/Asadullah-Noor",           sub:"Asadullah-Noor" },
-    { label:"LinkedIn", icon:"in", href:"https://www.linkedin.com/in/xhaffi-xcript/",  sub:"Connect with me" },
+    { label:"LinkedIn", icon:"in", href:"https://www.linkedin.com/in/xhaffi-xcript/",  sub:"Connect with us" },
     { label:"Email",    icon:"@",  href:"mailto:mrasadullahnoor@gmail.com",             sub:"mrasadullahnoor@gmail.com" },
   ];
 
@@ -658,7 +664,7 @@ function ContactPage() {
           Let's Build Together
         </h2>
         <p style={{ fontFamily:"'Crimson Pro',serif", fontSize: isMobile ? 16 : 18, color:"rgba(255,255,255,0.42)", marginBottom: isMobile ? 28 : 48 }}>
-          Have a project idea? Let's talk.
+          Have a project idea? Tell iAsync about it.
         </p>
       </motion.div>
 
@@ -667,7 +673,7 @@ function ContactPage() {
 
         {/* LEFT — Socials */}
         <motion.div initial={{ opacity:0, x: isMobile ? 0 : -36 }} animate={{ opacity:1, x:0 }} transition={{ delay:0.2, duration:0.8 }}>
-          <h3 style={{ fontFamily:"'Orbitron',monospace", fontSize:13, color:"rgba(255,255,255,0.38)", letterSpacing:3, marginBottom:18, textTransform:"uppercase" }}>Find Me Online</h3>
+          <h3 style={{ fontFamily:"'Orbitron',monospace", fontSize:13, color:"rgba(255,255,255,0.38)", letterSpacing:3, marginBottom:18, textTransform:"uppercase" }}>Find Us Online</h3>
           {socials.map((s,i) => (
             <motion.a key={s.label} href={s.href} target="_blank" rel="noreferrer"
               initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }} transition={{ delay:0.3+i*0.09 }}
@@ -682,8 +688,8 @@ function ContactPage() {
             </motion.a>
           ))}
           <div style={{ marginTop:28, padding: isMobile ? 18 : 24, background:"rgba(0,245,212,0.038)", border:"1px solid rgba(0,245,212,0.11)", borderRadius:12 }}>
-            <div style={{ fontFamily:"'Space Mono',monospace", fontSize:13, color:"#00f5d4", letterSpacing:2, marginBottom:12 }}>AVAILABLE FOR</div>
-            {["Freelance Projects", "Full-time Roles", "Open Source Collab"].map(t => (
+            <div style={{ fontFamily:"'Space Mono',monospace", fontSize:13, color:"#00f5d4", letterSpacing:2, marginBottom:12 }}>WHAT WE OFFER</div>
+            {["Websites & Web Apps", "Custom Software & SaaS", "Digital Marketing"].map(t => (
               <div key={t} style={{ fontFamily:"'Crimson Pro',serif", fontSize:18, color:"rgba(255,255,255,0.65)", marginBottom:10, display:"flex", gap:10 }}>
                 <span style={{ color:"#00f5d4" }}>✓</span> {t}
               </div>
@@ -697,7 +703,7 @@ function ContactPage() {
             <motion.div initial={{ opacity:0, scale:0.8 }} animate={{ opacity:1, scale:1 }} style={{ textAlign:"center", padding: isMobile ? 40 : 64 }}>
               <div style={{ fontSize:60, marginBottom:16 }}>🚀</div>
               <div style={{ fontFamily:"'Orbitron',monospace", fontSize:20, color:"#00f5d4" }}>Message Sent!</div>
-              <div style={{ fontFamily:"'Crimson Pro',serif", fontSize:18, color:"rgba(255,255,255,0.48)", marginTop:10 }}>I'll get back to you soon.</div>
+              <div style={{ fontFamily:"'Crimson Pro',serif", fontSize:18, color:"rgba(255,255,255,0.48)", marginTop:10 }}>We'll get back to you soon.</div>
               <motion.button whileHover={{ scale:1.05 }} whileTap={{ scale:0.97 }} onClick={() => setSent(false)}
                 style={{ marginTop:24, padding:"11px 28px", borderRadius:8, cursor:"auto", background:"transparent", color:"#00f5d4", border:"1px solid rgba(0,245,212,0.42)", fontFamily:"'Space Mono',monospace", fontSize:14, letterSpacing:2 }}>
                 SEND ANOTHER
@@ -717,7 +723,7 @@ function ContactPage() {
               <div>
                 <label style={labelStyle}>Message</label>
                 <textarea rows={5} value={form.msg} onChange={e => setForm(p => ({ ...p, msg:e.target.value }))}
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell us about your project..."
                   style={{ ...inputStyle, resize:"vertical" }}
                   onFocus={e => e.target.style.borderColor="rgba(0,245,212,0.45)"}
                   onBlur={e => e.target.style.borderColor="rgba(255,255,255,0.09)"} />
@@ -744,7 +750,7 @@ function ContactPage() {
 function LoadingScreen({ onDone }) {
   const [progress, setProgress] = useState(0);
   const [lineIdx, setLineIdx]   = useState(0);
-  const lines = ["> Initializing portfolio...","> Loading MERN stack modules...","> Connecting neural network...","> Ready."];
+  const lines = ["> Initializing iAsync...","> Loading MERN stack modules...","> Connecting neural network...","> Ready."];
   useEffect(() => {
     const iv = setInterval(() => {
       setProgress(p => { const n=Math.min(p+Math.random()*13,100); if(n>=100){ clearInterval(iv); setTimeout(onDone,550); } return n; });
@@ -776,6 +782,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [active, setActive]   = useState("Home");
   const { isMobile } = useBreakpoint();
+
+  // Update the browser tab title for the iAsync brand
+  useEffect(() => { document.title = "iAsync | Web Development & Digital Marketing"; }, []);
 
   const pages = {
     Home:       <HomePage setActive={setActive} />,
@@ -824,7 +833,7 @@ export default function App() {
           </AnimatePresence>
           <div style={{ textAlign:"center", padding: isMobile ? "24px 20px" : "36px 20px", borderTop:"1px solid rgba(255,255,255,0.05)", position:"relative", zIndex:1 }}>
             <div style={{ fontFamily:"'Space Mono',monospace", fontSize: isMobile ? 11 : 13, color:"rgba(255,255,255,0.28)", letterSpacing:2 }}>
-              © 2026 <span style={{ color:"#00f5d4" }}>Xhaffi Xcript</span>. All Rights Reserved.
+              © 2026 <span style={{ color:"#00f5d4" }}>iAsync</span>. All Rights Reserved.
             </div>
             <div style={{ fontFamily:"'Space Mono',monospace", fontSize: isMobile ? 11 : 13, color:"rgba(216,194,194,0.7)", marginTop:6 }}>
               Designed & Built by Asadullah Noor
